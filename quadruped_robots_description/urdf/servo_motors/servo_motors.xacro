@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find quadruped_robots_description)/urdf/common.xacro"/>
+
+  <xacro:macro name="KRS3302ICS_limit" params="lower_limit:=${-(3*M_PI)/4} upper_limit:=${(3*M_PI)/4}">
+    <limit lower="${lower_limit}" upper="${upper_limit}" effort="0.067" velocity="${(M_PI/3)/0.16}"/>
+  </xacro:macro>
+
+</robot>

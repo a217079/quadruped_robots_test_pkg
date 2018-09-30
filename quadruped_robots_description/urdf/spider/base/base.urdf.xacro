@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+  
+  <xacro:include filename="$(find quadruped_robots_description)/urdf/spider/base/base.gazebo.xacro"/>
+
+  <xacro:macro name="base" params="parent *joint_origin">
+    <joint name="base_link_joint" type="fixed">>
+      <insert_block name="joint_origin"/>
+      <parent link="${parent}"/>
+      <child link="base_link"/>
+    </joint>
+
+    <link name="base_link">
+      <visual>
+        <geometry>
+          <mesh filename="package://quadruped_robots_description/meshes/spider/base.STL"/>
+        </geometry>
+      </visual>
+      <collision>
+        <geometry>
+          <mesh filename="package://quadruped_robots_description/meshes/spider/base.STL"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <mass value="1.38630"/>
+        <inertia ixx="0.01563185703" ixy="0" ixz="0" iyy="0.00958260405" iyz="0" izz="0.01938754188"/>
+      </inertial>
+    </link>
+  </xacro:macro>
+
+</robot>

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find quadruped_robots_description)/urdf/servo_motors/servo_motors.xacro"/>
+
+  <xacro:macro name="leg1" params="prefix parent *joint_origin">
+    <joint name="${prefix}_leg1_joint" type="revolute">
+      <insert_block name="joint_origin"/>
+      <axis xyz="0 0 1"/>
+      <KRS3302ICS_limit/>
+      <parent link="${parent}"/>
+      <child link="${prefix}_leg1_link"/>
+    </joint>
+
+    <link name="${prefix}_leg1_link">
+      <visual>
+        <geometry>
+          <mesh filename="package://quadruped_robots_description/meshes/spider/leg1.STL"/>
+        </geometry>
+      </visual>
+      <collision>
+        <geometry>
+          <mesh filename="package://quadruped_robots_description/meshes/spider/leg1.STL"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <mass value="0.16215"/>
+        <inertia ixx="0.00017574959" ixy="0" ixz="0.00012160951" iyy="0.00038938203" iyz="0" izz="0.00028804077"/>
+      </inertial>
+    </link>
+  </xacro:macro>
+
+</robot>

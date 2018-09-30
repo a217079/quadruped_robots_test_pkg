@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<robot name="spider" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  
+  <xacro:include filename="$(find quadruped_robots_description)/urdf/spider/base/base.urdf.xacro"/>
+  <xacro:include filename="$(find quadruped_robots_description)/urdf/spider/legs/leg.urdf.xacro"/>
+  
+  <!-- =============== Links & Joints =============== -->
+
+  <!-- Base -->
+  <link name="base_footprint"/>
+  <xacro:base parent="base_footprint">
+    <origin xyz="0 0 0"/>
+  </xacro:base>
+
+
+  <!-- Legs -->
+  <!-- Front right leg -->
+  <xacro:leg prefix="fr" parent="base_link">
+    <origin rpy="0 0 0" xyz="0.12 0.12 0.01"/>
+  </xacro:leg>
+  
+  <!-- Front left leg -->
+  <xacro:leg prefix="fl" parent="base_link">
+    <origin rpy="0 0 ${M_PI}" xyz="-0.12 0.12 0.01"/>
+  </xacro:leg>
+
+  <!-- Rear right leg -->
+  <xacro:leg prefix="rr" parent="base_link">
+    <origin rpy="0 0 0" xyz="0.12 -0.12 0.01"/>
+  </xacro:leg>
+
+  <!-- Rear left leg -->
+  <xacro:leg prefix="rl" parent="base_link">
+    <origin rpy="0 0 ${M_PI}" xyz="-0.12 -0.12 0.01"/>
+  </xacro:leg>
+</robot>
